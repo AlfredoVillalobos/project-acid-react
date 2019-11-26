@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+// import logo from './logo.svg';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import TweetsContainer from './containers/TweetsContainer';
+import { ActionCableProvider } from 'react-actioncable-provider';
+import { API_WS_ROOT } from './constants';
+class App extends Component {
+  render(){
+    return(
+      <div className="App">
+        <ActionCableProvider url={API_WS_ROOT}>
+          <TweetsContainer/>
+        </ActionCableProvider>
+      </div>
+    );
+  }
 }
 
 export default App;
