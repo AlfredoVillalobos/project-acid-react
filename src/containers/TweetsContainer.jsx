@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as tweetAction from '../actions/tweets'
 import Tweets from '../component/Tweets';
-import Create from '../component/Create';
 
 class TweetsContainer extends Component {
   
@@ -15,7 +14,6 @@ class TweetsContainer extends Component {
   render(){
     return(
       <div>
-        <Create {...this.props}/>
         <Tweets {...this.props}/>
       </div>
     );

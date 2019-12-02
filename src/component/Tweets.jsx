@@ -10,10 +10,19 @@ import {
   ListGroupItemHeading 
 } from 'reactstrap';
 import _ from 'lodash';
-import { ActionCable } from 'react-actioncable-provider';
-import { API_ROOT } from '../constants';
 
 class Tweets extends Component {
+  componentDidMount(){
+    this.reloadTweetComponent();
+  }
+
+  reloadTweetComponent(){
+    const { actions } = this.props;
+    setTimeout(() => {
+      actions.fetchTweet();
+      window.location = "/"
+    }, 5000);
+  }
   render(){
     const { tweets } = this.props
     return(
@@ -27,10 +36,11 @@ class Tweets extends Component {
                     <h4 className='label-title p-3 mb-4'>Tweets</h4>
                     <ListGroup className='p-3 mb-4'>
                       {tweets ? (
-                        _.map(tweets, (item, index) => {                  
+                        _.map(tweets, (item, index) => {
                           return(
-                            <ListGroupItem key={item.id} style={{listStyle: 'none'}}>                            <ListGroupItemHeading>
-                                {item.content}
+                            <ListGroupItem key={item.id} style={{listStyle: 'none'}}>                            
+                              <ListGroupItemHeading style={{textAlign: 'justify'}}>
+                                <p>{index+1} - {item.tweet}</p>
                               </ListGroupItemHeading>
                             </ListGroupItem>
                           );
