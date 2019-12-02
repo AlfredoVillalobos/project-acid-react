@@ -2,7 +2,7 @@
   "name": "twitterchile",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000/api",
+  "proxy": "http://localhost:3000/",
   "dependencies": {
     "add": "^2.0.6",
     "axios": "^0.19.0",
